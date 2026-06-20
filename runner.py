@@ -278,9 +278,23 @@ def main():
         log.info("Executando comandos pre-loop...")
         cmd_outputs = run_commands(commands, log)
 
+    # Carregar contexto de projeto (se definido no meta)
+    project = meta.get("project", "").strip()
+    project_prefix = ""
+    if project:
+        ctx_path = LOOPS_DIR / "projetos" / project / "CONTEXTO.md"
+        if ctx_path.exists():
+            project_prefix = ctx_path.read_text(encoding="utf-8").strip()
+            log.info(f"Contexto de projeto carregado: {project}")
+        else:
+            log.warning(f"Contexto nao encontrado: {ctx_path}")
+
     prompt = prompt_template
     for label, output in cmd_outputs.items():
         prompt = prompt.replace(f"{{{label}}}", output)
+
+    if project_prefix:
+        prompt = f"=== CONTEXTO DO PROJETO: {project} ===\n{project_prefix}\n=== FIM DO CONTEXTO ===\n\n{prompt}"
 
     if args.dry_run:
         print("\n" + "="*60)
