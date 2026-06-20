@@ -1,0 +1,31 @@
+{
+  "_comment": "Preencha as API keys. Nunca commite este arquivo com keys reais.",
+  "default_provider": "anthropic",
+
+  "anthropic_api_key": "",
+  "openai_api_key": "",
+  "ollama_url": "http://localhost:11434",
+
+  "providers": {
+    "antigravity": {
+      "base_url": "https://api.antigravity.ai/v1",
+      "api_key": "",
+      "default_model": "ag-1"
+    },
+    "openrouter": {
+      "base_url": "https://openrouter.ai/api/v1",
+      "api_key": "",
+      "default_model": "anthropic/claude-haiku-4-5"
+    },
+    "lm-studio": {
+      "base_url": "http://localhost:1234/v1",
+      "api_key": "lm-studio",
+      "default_model": "local-model"
+    },
+    "groq": {
+      "base_url": "https://api.groq.com/openai/v1",
+      "api_key": "",
+      "default_model": "llama-3.3-70b-versatile"
+    }
+  }
+}
