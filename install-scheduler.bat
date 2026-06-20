@@ -66,6 +66,20 @@ schtasks /create /tn "Loops\n8n - Health Check" ^
   /ru "%USERNAME%" /f
 echo [OK] n8n Health Check
 
+:: AM — Lead Follow-up (Seg-Sex 8:00 — verifica CRM e gera follow-ups)
+schtasks /create /tn "Loops\AM - Lead Follow-up" ^
+  /tr "\"%LOOPS_DIR%run-loop.bat\" am\lead-followup.loop.md" ^
+  /sc WEEKLY /d MON,TUE,WED,THU,FRI /st 08:00 ^
+  /ru "%USERNAME%" /f
+echo [OK] AM Lead Follow-up
+
+:: AM — Lead Generation (Segundas 9:00 — gera 15 leads da semana)
+schtasks /create /tn "Loops\AM - Lead Generation" ^
+  /tr "\"%LOOPS_DIR%run-loop.bat\" am\lead-generation.loop.md" ^
+  /sc WEEKLY /d MON /st 09:00 ^
+  /ru "%USERNAME%" /f
+echo [OK] AM Lead Generation
+
 echo.
 echo Todos os loops registrados. Verifique em: Agendador de Tarefas ^> Loops
 pause
