@@ -12,22 +12,29 @@ loops/
 ├── install-scheduler.bat  # Registra todos os loops no Windows (executar como Admin)
 │
 ├── aji/                   # AJI — Controladoria Juridica Unimed
-│   ├── morning-pipeline.loop.md   # Seg-Sex 7:17h
+│   ├── morning-pipeline.loop.md   # Seg-Sex 7:17h — DJen v2 + DataJud cross-ref
+│   ├── datajud-monitor.loop.md    # Seg-Sex 8:15h — jurimetria 16 processos AM
 │   ├── dual-check.loop.md         # Seg-Sex 11:23h
 │   └── cpj-sync.loop.md           # Seg-Sex 8:45h
 │
 ├── am/                    # Advocacia Marcondes
 │   ├── weekly-report.loop.md      # Segundas 9:21h
-│   └── projudi-monitor.loop.md    # Seg-Sex 10:43h
+│   ├── projudi-monitor.loop.md    # Seg-Sex 10:43h
+│   ├── notion-crm-sync.loop.md    # Seg-Sex 9:00h — monitor Notion→Supabase CRM
+│   ├── lead-followup.loop.md      # Seg-Sex 8:00h
+│   ├── lead-generation.loop.md    # Segundas 9:00h
+│   └── crm.md                     # Painel CRM persistente (Caio)
 │
-├── iudex/                 # Iudex SaaS
+├── mishpat/               # MISHPAT — Plataforma de Inteligencia Juridica (AYIN GROUP)
 │   └── deploy-health.loop.md      # Seg-Sex 8:37h
 │
 ├── seguranca/             # Auditoria de seguranca
 │   └── security-review.loop.md    # Sextas 14:51h
 │
-├── n8n/                   # n8n Hetzner
-│   └── health-check.loop.md       # Quartas 9:11h
+├── n8n/                   # n8n + OpenClaw (Hetzner 167.233.49.205)
+│   └── health-check.loop.md       # Quartas 9:11h — verifica n8n:5678 + OpenClaw:80
+│
+├── projetos/              # Contextos de projeto portaveis (8 areas juridicas)
 │
 └── output/                # Resultados de cada execucao (YYYY-MM-DD_HH-MM_nome.md)
 ```

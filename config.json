@@ -5,6 +5,9 @@
   "anthropic_api_key": "",
   "openai_api_key": "",
   "ollama_url": "http://localhost:11434",
+  "n8n_host": "167.233.49.205",
+  "n8n_url": "http://167.233.49.205:5678",
+  "openclaw_host": "167.233.49.205",
 
   "providers": {
     "antigravity": {

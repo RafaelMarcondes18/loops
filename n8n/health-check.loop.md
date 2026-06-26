@@ -9,33 +9,39 @@ tags: n8n, hetzner, infra, monitor, quarta
 ---
 
 --- commands
-health | py -c "import urllib.request; r=urllib.request.urlopen('http://{N8N_HOST}:5678/healthz', timeout=10); print('OK:', r.status)" | C:\Users\Rafael Marcondes
+health_n8n      | py -c "import urllib.request; r=urllib.request.urlopen('http://167.233.49.205:5678/healthz', timeout=10); print('OK:', r.status)" | C:\Users\Rafael Marcondes
+health_openclaw | py -c "import urllib.request; r=urllib.request.urlopen('http://167.233.49.205:80', timeout=10); print('OK:', r.status)" | C:\Users\Rafael Marcondes
 ---
 
 --- prompt
-Voce e o monitor de infraestrutura do servidor n8n hospedado no Hetzner.
+Voce e o monitor de infraestrutura do servidor Hetzner (167.233.49.205).
+Servicos monitorados: n8n (porta 5678) + OpenClaw gateway (porta 80).
 
-Resultado do health check:
-{health}
+Resultado dos health checks:
+n8n: {health_n8n}
+OpenClaw: {health_openclaw}
 
 ---
 
-Interprete o resultado e produza um relatorio curto:
+Interprete os resultados e produza um relatorio curto:
 
-N8N HEALTH — {data_hoje}
-- Servidor: ONLINE / OFFLINE / TIMEOUT
-- Status HTTP: [codigo ou erro]
+HETZNER HEALTH — {data_hoje}
+- n8n (5678): ONLINE / OFFLINE / TIMEOUT | [codigo HTTP ou erro]
+- OpenClaw (80): ONLINE / OFFLINE / TIMEOUT | [codigo HTTP ou erro]
 - Acao recomendada: [nenhuma / restart / verificar manualmente]
 
-Se OFFLINE:
-  Instrucoes de recovery:
-  1. Acesse o VPS Oracle (backup) ou Hetzner via SSH
-  2. Execute: docker restart n8n  (ou o comando de restart configurado)
+Se n8n OFFLINE:
+  Recovery:
+  1. SSH em 167.233.49.205
+  2. Execute: docker restart n8n
   3. Verifique logs: docker logs n8n --tail 50
 
-Se ONLINE: "n8n: operacional. Nenhuma acao necessaria."
+Se OpenClaw OFFLINE:
+  Recovery:
+  1. SSH em 167.233.49.205
+  2. Verifique: systemctl status openclaw ou pm2 status
 
-Maximo 12 linhas. Portugues brasileiro.
+Se ambos ONLINE: "Hetzner: n8n e OpenClaw operacionais. Nenhuma acao necessaria."
 
-NOTA: Substitua {N8N_HOST} pelo IP real do servidor Hetzner em config.json antes de usar.
+Maximo 15 linhas. Portugues brasileiro.
 ---

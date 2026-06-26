@@ -17,6 +17,13 @@ schtasks /create /tn "Loops\AJI - Morning Pipeline" ^
   /ru "%USERNAME%" /f
 echo [OK] AJI Morning Pipeline
 
+:: AJI — DataJud Monitor (Seg-Sex 8:15)
+schtasks /create /tn "Loops\AJI - DataJud Monitor" ^
+  /tr "\"%LOOPS_DIR%run-loop.bat\" aji\datajud-monitor.loop.md" ^
+  /sc WEEKLY /d MON,TUE,WED,THU,FRI /st 08:15 ^
+  /ru "%USERNAME%" /f
+echo [OK] AJI DataJud Monitor
+
 :: AJI — Dual check (Seg-Sex 11:23)
 schtasks /create /tn "Loops\AJI - Dual Check" ^
   /tr "\"%LOOPS_DIR%run-loop.bat\" aji\dual-check.loop.md" ^
@@ -45,12 +52,19 @@ schtasks /create /tn "Loops\AM - PROJUDI Monitor" ^
   /ru "%USERNAME%" /f
 echo [OK] AM PROJUDI Monitor
 
-:: Iudex — Deploy Health (Seg-Sex 8:37)
-schtasks /create /tn "Loops\Iudex - Deploy Health" ^
-  /tr "\"%LOOPS_DIR%run-loop.bat\" iudex\deploy-health.loop.md" ^
+:: AM — Notion CRM Sync check (Seg-Sex 9:00)
+schtasks /create /tn "Loops\AM - Notion CRM Sync" ^
+  /tr "\"%LOOPS_DIR%run-loop.bat\" am\notion-crm-sync.loop.md" ^
+  /sc WEEKLY /d MON,TUE,WED,THU,FRI /st 09:00 ^
+  /ru "%USERNAME%" /f
+echo [OK] AM Notion CRM Sync
+
+:: MISHPAT — Deploy Health (Seg-Sex 8:37)
+schtasks /create /tn "Loops\MISHPAT - Deploy Health" ^
+  /tr "\"%LOOPS_DIR%run-loop.bat\" mishpat\deploy-health.loop.md" ^
   /sc WEEKLY /d MON,TUE,WED,THU,FRI /st 08:37 ^
   /ru "%USERNAME%" /f
-echo [OK] Iudex Deploy Health
+echo [OK] MISHPAT Deploy Health
 
 :: Seguranca — Security Review (Sextas 14:51)
 schtasks /create /tn "Loops\Seguranca - Security Review" ^
@@ -59,12 +73,12 @@ schtasks /create /tn "Loops\Seguranca - Security Review" ^
   /ru "%USERNAME%" /f
 echo [OK] Security Review
 
-:: n8n — Health Check (Quartas 9:11)
+:: n8n + OpenClaw — Health Check (Quartas 9:11)
 schtasks /create /tn "Loops\n8n - Health Check" ^
   /tr "\"%LOOPS_DIR%run-loop.bat\" n8n\health-check.loop.md" ^
   /sc WEEKLY /d WED /st 09:11 ^
   /ru "%USERNAME%" /f
-echo [OK] n8n Health Check
+echo [OK] Hetzner Health Check (n8n + OpenClaw)
 
 :: AM — Lead Follow-up (Seg-Sex 8:00 — verifica CRM e gera follow-ups)
 schtasks /create /tn "Loops\AM - Lead Follow-up" ^
