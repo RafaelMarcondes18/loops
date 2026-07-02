@@ -136,23 +136,50 @@ def run_commands(commands: list[dict], log: logging.Logger) -> dict[str, str]:
 
 # ── AI Providers ──────────────────────────────────────────────────────────────
 
-def call_anthropic(prompt: str, model: str, config: dict) -> str:
+def call_anthropic(prompt: str, model: str, config: dict,
+                   system_context: str = "") -> str:
+    """
+    Chama Claude com:
+    - Prompt caching no system_context (CONTEXTO.md do projeto) — 80-95% desconto no input
+    - Model routing: prompt longo > threshold → model_complex (Sonnet) automaticamente
+    """
     api_key = (config.get("anthropic_api_key") or
                os.environ.get("ANTHROPIC_API_KEY", ""))
     if not api_key:
         raise RuntimeError("ANTHROPIC_API_KEY nao configurada")
 
+    effective_model = model or config.get("default_model", "claude-sonnet-4-6")
+
+    # Roteamento automático: prompt longo → model_complex
+    routing_threshold = config.get("model_routing_threshold", 6000)
+    model_complex     = config.get("model_complex", "claude-sonnet-4-6")
+    if len(prompt) > routing_threshold and model_complex and model_complex != effective_model:
+        effective_model = model_complex
+
     if HAS_ANTHROPIC:
         client = _anthropic_sdk.Anthropic(api_key=api_key)
-        msg = client.messages.create(
-            model=model or "claude-sonnet-4-6",
+
+        # Prompt caching: system_context fixo (CONTEXTO.md) cached entre chamadas
+        system_blocks = []
+        if system_context:
+            system_blocks = [{"type": "text", "text": system_context,
+                              "cache_control": {"type": "ephemeral"}}]
+
+        kwargs = dict(
+            model=effective_model,
             max_tokens=4096,
-            messages=[{"role": "user", "content": prompt}]
+            messages=[{"role": "user", "content": prompt}],
         )
+        if system_blocks:
+            kwargs["system"] = system_blocks
+
+        msg = client.messages.create(**kwargs)
         return msg.content[0].text
     else:
+        full_prompt = (f"{system_context}\n\n{prompt}".strip()
+                       if system_context else prompt)
         return _http_openai_compat(
-            prompt, model or "claude-sonnet-4-6",
+            full_prompt, effective_model,
             base_url="https://api.anthropic.com/v1",
             api_key=api_key,
             extra_headers={"anthropic-version": "2023-06-01"}
@@ -279,6 +306,7 @@ def main():
         cmd_outputs = run_commands(commands, log)
 
     # Carregar contexto de projeto (se definido no meta)
+    # O CONTEXTO.md é separado do prompt para permitir caching no system (apenas Anthropic)
     project = meta.get("project", "").strip()
     project_prefix = ""
     if project:
@@ -293,14 +321,18 @@ def main():
     for label, output in cmd_outputs.items():
         prompt = prompt.replace(f"{{{label}}}", output)
 
-    if project_prefix:
+    # Para providers não-Anthropic, injeta o contexto no prompt diretamente
+    if provider not in ("anthropic", "claude") and project_prefix:
         prompt = f"=== CONTEXTO DO PROJETO: {project} ===\n{project_prefix}\n=== FIM DO CONTEXTO ===\n\n{prompt}"
+        project_prefix = ""  # já injetado, não passar como system
 
     if args.dry_run:
         print("\n" + "="*60)
         print(f"DRY RUN — {loop_name}")
         print("="*60)
         print(f"Provider: {provider}  Model: {model or 'default'}\n")
+        if project_prefix:
+            print(f"SYSTEM (cached):\n{project_prefix[:300]}...\n")
         print("PROMPT:\n")
         print(prompt)
         print("="*60)
@@ -309,7 +341,9 @@ def main():
     # Chamar AI
     log.info("Chamando AI...")
     try:
-        if provider in PROVIDERS:
+        if provider in ("anthropic", "claude"):
+            result = call_anthropic(prompt, model, config, system_context=project_prefix)
+        elif provider in PROVIDERS:
             result = PROVIDERS[provider](prompt, model, config)
         else:
             result = call_generic(prompt, model, config, provider)

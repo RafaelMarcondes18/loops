@@ -4,6 +4,11 @@
 
   "anthropic_api_key": "",
   "openai_api_key": "",
+
+  "_routing_comment": "model_complex e model_routing_threshold controlam roteamento automatico",
+  "default_model": "claude-haiku-4-5-20251001",
+  "model_complex": "claude-sonnet-4-6",
+  "model_routing_threshold": 6000,
   "ollama_url": "http://localhost:11434",
   "n8n_host": "167.233.49.205",
   "n8n_url": "http://167.233.49.205:5678",
