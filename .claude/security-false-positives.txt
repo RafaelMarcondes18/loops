@@ -1,0 +1,10 @@
+EXCLUSÕES ADICIONAIS DE FALSO POSITIVO — AYIN GROUP:
+
+1. React/Next.js: não reportar XSS em JSX sem dangerouslySetInnerHTML ou bypassSecurityTrustHtml
+2. Variáveis de ambiente (process.env, $env:) são valores confiáveis — não reportar como exposição
+3. UUIDs gerados por Supabase ou crypto.randomUUID() são seguros — não reportar como previsíveis
+4. NEXT_PUBLIC_* vars são intencionalmente públicas — não reportar como exposição de secret
+5. Supabase anon key em frontend é comportamento esperado — não reportar como hardcoded secret
+6. Scripts Python de automação interna não recebem input de usuário externo — context de execução local
+7. Arquivos .env.example com valores placeholder não são vulnerabilidades
+8. Comentários TODO/FIXME de segurança não são vulnerabilidades por si mesmos
