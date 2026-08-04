@@ -1,0 +1,24 @@
+name: Security Review
+
+permissions:
+  pull-requests: write
+  contents: read
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  security:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: anthropics/claude-code-security-review@main
+        with:
+          comment-pr: true
+          upload-results: true
+          claude-api-key: ${{ secrets.ANTHROPIC_API_KEY }}
+          claude-model: claude-haiku-4-5-20251001
+          claudecode-timeout: 15
+          custom-security-scan-instructions: .claude/security-scan-instructions.txt
+          false-positive-filtering-instructions: .claude/security-false-positives.txt
