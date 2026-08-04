@@ -1,0 +1,9 @@
+PRIORIDADE EXTRA — AGENTE IA / LOOPS AUTÔNOMOS:
+- Prompt injection: input de usuário concatenado diretamente em prompt sem sanitização ou delimitação
+- API key exposure: ANTHROPIC_API_KEY, OPENAI_API_KEY em logs, responses, error messages ou variáveis cliente
+- Arbitrary code execution via tool use não validado (exec, eval, subprocess sem allow-list)
+- Infinite loop: ausência de max_iterations, max_tokens ou token budget em loops autônomos
+- SSRF via tool de web fetch sem allowlist de domínios (qualquer URL fornecida pelo usuário/LLM aceita)
+- Exfiltração de dados via tool call (LLM enviando dado interno para URL controlada pelo atacante)
+- Privilege escalation: tool que executa com permissões mais altas do que o contexto do usuário
+- Ausência de human-in-the-loop em operações destrutivas (delete, push, deploy) disparadas por agente
