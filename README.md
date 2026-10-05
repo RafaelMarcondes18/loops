@@ -127,3 +127,7 @@ Em `config.json`:
 ```
 
 Depois use: `run-loop.bat meu-loop.loop.md --provider meu-provider`
+
+## Loops conversacionais de gestão
+
+A [biblioteca de sete loops conversacionais](conversacionais/README.md) organiza 60 etapas de análise de contratos, fornecedores, stakeholders, riscos, indicadores, processos e documentos. São skills usadas na conversa, independentes do runner e dos agendamentos acima.

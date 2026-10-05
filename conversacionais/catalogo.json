@@ -1,0 +1,406 @@
+{
+  "version": 1,
+  "source_sha256": "bf2651afa14b6328c34f7326206f86e3410a65e6ecb0ed9fb97428b84c71331a",
+  "loops": [
+    {
+      "name": "loop-contratos-renovacao",
+      "titulo": "Gestão de Contratos e Renovação em Procurement",
+      "mode": "conversational",
+      "scheduled": false,
+      "skill": "loop-contratos-renovacao/SKILL.md",
+      "etapas": [
+        {
+          "numero": 1,
+          "titulo": "Mapa do contrato",
+          "prompt_sha256": "57874cc0bef62f661983b43d566149090dd0e4a54f189a18fdc105f54d823bee"
+        },
+        {
+          "numero": 2,
+          "titulo": "Performance contratual",
+          "prompt_sha256": "ad29a9781d695c21f5f79bc9f14d26ef6d80fa750855c47aa5ea9c5b23babf84"
+        },
+        {
+          "numero": 3,
+          "titulo": "Economia e competitividade",
+          "prompt_sha256": "229393e85403260f23a25f819c085fa3bb67275b2c6d579e176116e9d6cfb21f"
+        },
+        {
+          "numero": 4,
+          "titulo": "Riscos de renovação ou saída",
+          "prompt_sha256": "83df127d712fd28ddd19b7e2b98505d9fcbfff44a716d83db48fc4a709887545"
+        },
+        {
+          "numero": 5,
+          "titulo": "Agenda de renegociação",
+          "prompt_sha256": "a031f37173966fd6b9221c549f59f436ca753e2d999f9aab3e33bdebb8c10103"
+        },
+        {
+          "numero": 6,
+          "titulo": "Recomendação de decisão",
+          "prompt_sha256": "aad4f87955be819eca2b460b6d71fd848ad0ce72405525e417b3d6701c9c2b99"
+        },
+        {
+          "numero": 7,
+          "titulo": "Plano de execução e governança",
+          "prompt_sha256": "32bc4bb3764da3a2621886e0c248804a83f75ef40ac966be212838a719cacd2e"
+        }
+      ],
+      "skills_apoio": [
+        "analista-comparativo-de-documentos",
+        "arquitetar-kpis-e-performance",
+        "gerador-de-planos-de-acao"
+      ]
+    },
+    {
+      "name": "loop-performance-fornecedores",
+      "titulo": "Performance e Desenvolvimento de Fornecedores",
+      "mode": "conversational",
+      "scheduled": false,
+      "skill": "loop-performance-fornecedores/SKILL.md",
+      "etapas": [
+        {
+          "numero": 1,
+          "titulo": "Contexto e importância do fornecedor",
+          "prompt_sha256": "0c0230193527ea1ed9752ff2033fab2d5d7a30e453f96ae5f2cc0564f7fd2a7b"
+        },
+        {
+          "numero": 2,
+          "titulo": "Scorecard de performance",
+          "prompt_sha256": "fea75fa6447b45ed173e80b3d3dcb13f162797370fe51cf07eaa5d44127d6847"
+        },
+        {
+          "numero": 3,
+          "titulo": "Diagnóstico de desvios",
+          "prompt_sha256": "bb1f942c5d1ac589596ecb8503a8c97a054555a31e958ccb9a3dd7edff722df5"
+        },
+        {
+          "numero": 4,
+          "titulo": "Segmentação da relação",
+          "prompt_sha256": "0100179ae1011043015c5db3c25da6f6c963dd36703900c31ced9edf354f2d53"
+        },
+        {
+          "numero": 5,
+          "titulo": "Plano de desenvolvimento",
+          "prompt_sha256": "aff5a88e9bcfadd8353085fb7467dd00109e59e7bc046661db7c440dba5cfe3f"
+        },
+        {
+          "numero": 6,
+          "titulo": "QBR e governança",
+          "prompt_sha256": "da9186f9abccb6c502eab94222c1d21e5064b09a679b17eb0ef46d1a2f478ba5"
+        },
+        {
+          "numero": 7,
+          "titulo": "Decisão sobre continuidade",
+          "prompt_sha256": "032f53ed802a03cdace3aff47515b179be91c1e1f480b0bb41ca042fd8d512c2"
+        }
+      ],
+      "skills_apoio": [
+        "arquitetar-kpis-e-performance",
+        "analista-de-processos-e-gargalos",
+        "gerador-de-planos-de-acao"
+      ]
+    },
+    {
+      "name": "loop-gestao-stakeholders",
+      "titulo": "Gestão de Stakeholders",
+      "mode": "conversational",
+      "scheduled": false,
+      "skill": "loop-gestao-stakeholders/SKILL.md",
+      "etapas": [
+        {
+          "numero": 1,
+          "titulo": "Contexto da iniciativa",
+          "prompt_sha256": "2a077ae51db2dd6ea34a0f27e77bdbaa3eeee3c80fbf634c86e405db262bb2fb"
+        },
+        {
+          "numero": 2,
+          "titulo": "Mapeamento de stakeholders",
+          "prompt_sha256": "c74a25a56440925e8ca1be04c4ae5cb11eea83ddb855bfa6f21f884e528131fe"
+        },
+        {
+          "numero": 3,
+          "titulo": "Interesses e expectativas",
+          "prompt_sha256": "d2620e6b6a77cbcd8bbbad0f3951b4b0ce49fa9740ea07c7a44ca14658c02b99"
+        },
+        {
+          "numero": 4,
+          "titulo": "Influência e posicionamento",
+          "prompt_sha256": "08899603ebad3cc9a821dc3b568b82b7b416b736391f1619d503b9c43b6f49c1"
+        },
+        {
+          "numero": 5,
+          "titulo": "Riscos de adesão",
+          "prompt_sha256": "d96c5580adb21f31112958d7f8b86963ee0fba6505f9f8660831e030a0c0b1d1"
+        },
+        {
+          "numero": 6,
+          "titulo": "Estratégia de engajamento",
+          "prompt_sha256": "bf3160dea07363a75bb8342ec8f9180ba0429883dd64deb5d57295c383ba0202"
+        },
+        {
+          "numero": 7,
+          "titulo": "Plano de comunicação e decisão",
+          "prompt_sha256": "b6da6660b4cfabf4886750a87bc32ff03f945d882d242c02811d8e315fe59fe9"
+        },
+        {
+          "numero": 8,
+          "titulo": "Mapa executivo de stakeholders",
+          "prompt_sha256": "485c783c919d92aee40cf9af5f71788e12290e0d69beafce8731521a22c6cbc6"
+        }
+      ],
+      "skills_apoio": [
+        "gestor-de-projetos-profissional",
+        "gerador-de-planos-de-acao",
+        "editor-executivo-de-textos"
+      ]
+    },
+    {
+      "name": "loop-riscos-empresariais",
+      "titulo": "Gestão de Riscos Empresariais",
+      "mode": "conversational",
+      "scheduled": false,
+      "skill": "loop-riscos-empresariais/SKILL.md",
+      "etapas": [
+        {
+          "numero": 1,
+          "titulo": "Escopo do risco",
+          "prompt_sha256": "4967702beebf661ae055d7e68851800f0f9bc4d7f43759e58f374493b1470ee5"
+        },
+        {
+          "numero": 2,
+          "titulo": "Identificação de riscos",
+          "prompt_sha256": "bfe967a9537340afbbb9233d2001379618fd172b09dd2ec60f87909f39e2ce8d"
+        },
+        {
+          "numero": 3,
+          "titulo": "Avaliação de probabilidade e impacto",
+          "prompt_sha256": "2e5a1aa86a828642aa9af692e12d7a528138cb76a5b2b42daee7674ba78a44c9"
+        },
+        {
+          "numero": 4,
+          "titulo": "Controles existentes",
+          "prompt_sha256": "7ba787d8b7ae8be41641b08c5e74814683189c11c6012213bb23bc0b8bc24eaf"
+        },
+        {
+          "numero": 5,
+          "titulo": "Dependências e concentração",
+          "prompt_sha256": "ff9c3c4924121c773fff98e351719b8823367dc89221a0504452884ac2285ce3"
+        },
+        {
+          "numero": 6,
+          "titulo": "Tratamento de riscos",
+          "prompt_sha256": "1c98f35f2db128f74d845d79e9479154ca8ea017e86989f51629a04d6fb09587"
+        },
+        {
+          "numero": 7,
+          "titulo": "Indicadores e gatilhos",
+          "prompt_sha256": "584b6d1430141bcc40cf78e79f6c9ca67fa2f8361ba52966b43e67c292600907"
+        },
+        {
+          "numero": 8,
+          "titulo": "Registro executivo de riscos",
+          "prompt_sha256": "0c57ff8bccbe1d67564fbbc3b944466054005ad8038398b6e744e631fc131210"
+        }
+      ],
+      "skills_apoio": [
+        "analista-de-processos-e-gargalos",
+        "gerador-de-planos-de-acao",
+        "arquitetar-kpis-e-performance"
+      ]
+    },
+    {
+      "name": "loop-indicadores-performance",
+      "titulo": "Análise de Indicadores e Performance",
+      "mode": "conversational",
+      "scheduled": false,
+      "skill": "loop-indicadores-performance/SKILL.md",
+      "etapas": [
+        {
+          "numero": 1,
+          "titulo": "Definição do objetivo de performance",
+          "prompt_sha256": "de1736fc80e8fa868ebe5c17106692d5e28480d7421e3f09645fc34f10553bac"
+        },
+        {
+          "numero": 2,
+          "titulo": "Qualidade dos dados",
+          "prompt_sha256": "701faa456b57fcf7737cb36c95be6eb79496394f60adf869295dd4908231e151"
+        },
+        {
+          "numero": 3,
+          "titulo": "Leitura dos desvios",
+          "prompt_sha256": "7f552c15bac80a7a9ba82a6b7cae42a930e4c14078bdfb7e7c8d90a0af4e6ffc"
+        },
+        {
+          "numero": 4,
+          "titulo": "Hipóteses causais",
+          "prompt_sha256": "c08d2d2fcb8bb6aee2f860bcb4852283ff6b5457de6ea85a5df386cc7192d957"
+        },
+        {
+          "numero": 5,
+          "titulo": "Segmentação da análise",
+          "prompt_sha256": "ec77c7cbd0de9675e6182c7e5d0ad68607170961c0e1783ccd149d8cd44a23bb"
+        },
+        {
+          "numero": 6,
+          "titulo": "Priorização dos achados",
+          "prompt_sha256": "013922331c6d22edbc6d86e08f0e8d391823a7174f93dd6e0cadaefb6aa5e073"
+        },
+        {
+          "numero": 7,
+          "titulo": "Plano de resposta gerencial",
+          "prompt_sha256": "46481630a3aec3d5662317762d5f0c79326ba20e692b157d4e5db43f640a7ad3"
+        },
+        {
+          "numero": 8,
+          "titulo": "Resumo executivo de performance",
+          "prompt_sha256": "eef967ebb9e35615830e1b49c07e0fd240518c05b440d962dd7129ebac30e5d5"
+        }
+      ],
+      "skills_apoio": [
+        "arquitetar-kpis-e-performance",
+        "designer-de-dashboards-executivos",
+        "gerador-de-planos-de-acao"
+      ]
+    },
+    {
+      "name": "loop-melhoria-processos",
+      "titulo": "Mapeamento e Melhoria de Processos",
+      "mode": "conversational",
+      "scheduled": false,
+      "skill": "loop-melhoria-processos/SKILL.md",
+      "etapas": [
+        {
+          "numero": 1,
+          "titulo": "Clareza do processo e do resultado esperado",
+          "prompt_sha256": "d498b556f1e884e0845d60ae653c0ab91f30def4671c82892f6beaa8b5fa4020"
+        },
+        {
+          "numero": 2,
+          "titulo": "Mapeamento do processo atual",
+          "prompt_sha256": "23071addc1f72bee218f15e4a2771251896be2862a5baccd021c527033a9d4bc"
+        },
+        {
+          "numero": 3,
+          "titulo": "Validação com fatos e métricas",
+          "prompt_sha256": "edab058ea4b007f323ce1b8b9e97ef184eedb0ebdc9923f9b4a0612dcdefa7cb"
+        },
+        {
+          "numero": 4,
+          "titulo": "Gargalos, desperdícios e pontos de fricção",
+          "prompt_sha256": "4fc1ea18dc77aea12af26d62a90d3786b12b4090cab32a7660be4bdd75366068"
+        },
+        {
+          "numero": 5,
+          "titulo": "Análise de causas raiz",
+          "prompt_sha256": "5b26a2c7a02ee69f44cc473e2f4883f42b8e038e66153cf40cbd2d113fd97a2f"
+        },
+        {
+          "numero": 6,
+          "titulo": "Riscos, controles e dependências",
+          "prompt_sha256": "b2d9b7f1797325776ed87a329a43cffbb10f6a9b4501ee3f74b0209863d7176f"
+        },
+        {
+          "numero": 7,
+          "titulo": "Priorização das oportunidades de melhoria",
+          "prompt_sha256": "e0363f6145a11e50d0ed4befa59a907380938e6f93fe9be8e4457d5df02a12d1"
+        },
+        {
+          "numero": 8,
+          "titulo": "Desenho do processo futuro",
+          "prompt_sha256": "6408914cc7b3debce6a2985fbb076fce26b29994d75f153babfb2b75eb77324a"
+        },
+        {
+          "numero": 9,
+          "titulo": "Papéis, responsabilidades e governança",
+          "prompt_sha256": "891e11155493a90107a7aa4c321156e5836b0e418b7adfb8e4fbdb1daadca536"
+        },
+        {
+          "numero": 10,
+          "titulo": "Indicadores e pontos de controle",
+          "prompt_sha256": "bac29ec25edca79dc69818ab4f0dbe824118fa9d523249b028351486534028b4"
+        },
+        {
+          "numero": 11,
+          "titulo": "Plano de transição e teste",
+          "prompt_sha256": "47839b7deb1859ad84234b3b7d17efcaa94f0fa46811c37f055a756ad1743ee8"
+        },
+        {
+          "numero": 12,
+          "titulo": "Validação crítica e dossiê executivo",
+          "prompt_sha256": "b0660caddbc813e10b0b4a91dc5074fd0d3ac8d04e24129b4fe4c9e1d59fd584"
+        }
+      ],
+      "skills_apoio": [
+        "analista-de-processos-e-gargalos",
+        "criador-de-manuais-profissionais",
+        "arquitetar-kpis-e-performance",
+        "gerador-de-planos-de-acao"
+      ]
+    },
+    {
+      "name": "loop-analise-documentos",
+      "titulo": "Análise de Documentos",
+      "mode": "conversational",
+      "scheduled": false,
+      "skill": "loop-analise-documentos/SKILL.md",
+      "etapas": [
+        {
+          "numero": 1,
+          "titulo": "Contexto do documento",
+          "prompt_sha256": "1d8958358be1c27d5f4d7ccab53b8af86ad2dcdc0c0c57eba6cda738b28be155"
+        },
+        {
+          "numero": 2,
+          "titulo": "Resumo estruturado",
+          "prompt_sha256": "8a9b4ca967bf8f2ef2f44e8cba03eaf2fccec48ccf81d857cb09c31db73bd2b4"
+        },
+        {
+          "numero": 3,
+          "titulo": "Pontos críticos",
+          "prompt_sha256": "f5d8360f887aaf5d3fe8132b750f5f4ff2906f7980c029ddd905b6481a7188dd"
+        },
+        {
+          "numero": 4,
+          "titulo": "Riscos e implicações",
+          "prompt_sha256": "fd76973a7dece638a78e74be229880cb7c571dabafe36d0647440d5f79d8263f"
+        },
+        {
+          "numero": 5,
+          "titulo": "Perguntas e dúvidas",
+          "prompt_sha256": "29afcd6308d5f737939359a759995f9266dddeb24580fb1c726ced39dc795e05"
+        },
+        {
+          "numero": 6,
+          "titulo": "Síntese executiva",
+          "prompt_sha256": "9ca72ff899de241d89172e8d05f867896edad787ba52808ea76740faae677396"
+        },
+        {
+          "numero": 7,
+          "titulo": "Plano de ação",
+          "prompt_sha256": "d648824e1511b37f1c5075f4572a8f7f93898b0a3ce7aef4a8289a844f656ac4"
+        },
+        {
+          "numero": 8,
+          "titulo": "Comparação entre documentos",
+          "prompt_sha256": "8bdfc071fb1ea2e857b0b5a8fd9708b5463802f964adbb5fdcc8b94adaa82479"
+        },
+        {
+          "numero": 9,
+          "titulo": "Resumo para comunicação",
+          "prompt_sha256": "4feed6fce7323f64d73a9765fd9be53fd9b0fb5baddd3b85c5d710bcce8683c1"
+        },
+        {
+          "numero": 10,
+          "titulo": "Checklist final da análise",
+          "prompt_sha256": "c381b00c28c78eea5e2dc4ecc973e676ee28e35cd02d216c5031776a2f809c27"
+        }
+      ],
+      "skills_apoio": [
+        "sintetizador-de-relatorios-extensos",
+        "analista-comparativo-de-documentos",
+        "gerador-de-planos-de-acao",
+        "editor-executivo-de-textos"
+      ]
+    }
+  ]
+}
