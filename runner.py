@@ -9,6 +9,8 @@ Uso:
   py runner.py aji/morning-pipeline.loop.md --provider openai --model gpt-4o
   py runner.py aji/morning-pipeline.loop.md --dry-run
 """
+from __future__ import annotations
+
 import sys
 import os
 import json
@@ -273,6 +275,8 @@ def main():
     parser.add_argument("--model",    help="Modelo override")
     parser.add_argument("--dry-run",  action="store_true",
                         help="Mostra prompt sem chamar AI")
+    parser.add_argument("--no-llm",   action="store_true",
+                        help="Nao chama AI: salva e imprime apenas a saida dos comandos (0 tokens)")
     args = parser.parse_args()
 
     loop_path = Path(args.loop_file)
@@ -304,6 +308,17 @@ def main():
     if commands:
         log.info("Executando comandos pre-loop...")
         cmd_outputs = run_commands(commands, log)
+
+    if args.no_llm:
+        ts = datetime.now().strftime("%Y-%m-%d_%H-%M")
+        nl = chr(10)
+        corpo = (nl * 2).join("## " + k + nl + "```" + nl + v + nl + "```" for k, v in cmd_outputs.items())
+        OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+        out_path = OUTPUT_DIR / (ts + "_" + loop_name + ".md")
+        out_path.write_text("# " + loop_name + nl + "**" + ts + "** | sem IA" + nl * 2 + corpo + nl, encoding="utf-8")
+        log.info("Salvo (sem IA): " + str(out_path))
+        print(corpo)
+        return
 
     # Carregar contexto de projeto (se definido no meta)
     # O CONTEXTO.md é separado do prompt para permitir caching no system (apenas Anthropic)
