@@ -9,10 +9,10 @@ tags: aji, publicacoes, daily, briefing, datajud
 ---
 
 --- commands
-publicacoes     | py publicacoes.py --quiet                          | C:\Users\Rafael Marcondes\intimacoes-extractor
-djen_api        | py djen_api_v2.py --quiet                          | C:\Users\Rafael Marcondes\intimacoes-extractor
-validar         | py validar_cobertura.py                            | C:\Users\Rafael Marcondes\intimacoes-extractor
-notificar       | py notificar.py --dry-run                          | C:\Users\Rafael Marcondes\intimacoes-extractor
+publicacoes     | py publicacoes.py --quiet                          | C:\Users\1217\Quadrados\controladoria-juridica\automacoes\intimacoes-extractor
+djen_api        | py djen_api_v2.py --quiet                          | C:\Users\1217\Quadrados\controladoria-juridica\automacoes\intimacoes-extractor
+validar         | py validar_cobertura.py                            | C:\Users\1217\Quadrados\controladoria-juridica\automacoes\intimacoes-extractor
+notificar       | py notificar.py --dry-run                          | C:\Users\1217\Quadrados\controladoria-juridica\automacoes\intimacoes-extractor
 ---
 
 --- prompt

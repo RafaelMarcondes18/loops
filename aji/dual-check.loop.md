@@ -9,7 +9,7 @@ tags: aji, cobertura, auditoria, daily
 ---
 
 --- commands
-validar | py validar_cobertura.py --verbose | C:\Users\Rafael Marcondes\intimacoes-extractor
+validar | py validar_cobertura.py --verbose | C:\Users\1217\Quadrados\controladoria-juridica\automacoes\intimacoes-extractor
 ---
 
 --- prompt

@@ -9,11 +9,11 @@ tags: seguranca, auditoria, semanal, sexta
 ---
 
 --- commands
-plano     | type "C:\Users\Rafael Marcondes\.claude\plans\curried-squishing-naur.md" | C:\Users\Rafael Marcondes
-extractor | type "C:\Users\Rafael Marcondes\intimacoes-extractor\extractor.py"        | C:\Users\Rafael Marcondes
-config    | type "C:\Users\Rafael Marcondes\intimacoes-extractor\configurar.py"       | C:\Users\Rafael Marcondes
-cpj_sync  | type "C:\Users\Rafael Marcondes\intimacoes-extractor\cpj_sync.py"         | C:\Users\Rafael Marcondes
-notificar | type "C:\Users\Rafael Marcondes\intimacoes-extractor\notificar.py"        | C:\Users\Rafael Marcondes
+plano     | type "C:\Users\1217\.claude\plans\curried-squishing-naur.md" | C:\Users\1217
+extractor | type "C:\Users\1217\Quadrados\controladoria-juridica\automacoes\intimacoes-extractor\extractor.py"        | C:\Users\1217
+config    | type "C:\Users\1217\Quadrados\controladoria-juridica\automacoes\intimacoes-extractor\configurar.py"       | C:\Users\1217
+cpj_sync  | type "C:\Users\1217\Quadrados\controladoria-juridica\automacoes\intimacoes-extractor\cpj_sync.py"         | C:\Users\1217
+notificar | type "C:\Users\1217\Quadrados\controladoria-juridica\automacoes\intimacoes-extractor\notificar.py"        | C:\Users\1217
 ---
 
 --- prompt

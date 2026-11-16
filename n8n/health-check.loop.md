@@ -9,8 +9,8 @@ tags: n8n, hetzner, infra, monitor, quarta
 ---
 
 --- commands
-health_n8n      | py -c "import urllib.request; r=urllib.request.urlopen('http://167.233.49.205:5678/healthz', timeout=10); print('OK:', r.status)" | C:\Users\Rafael Marcondes
-health_openclaw | py -c "import urllib.request; r=urllib.request.urlopen('http://167.233.49.205:80', timeout=10); print('OK:', r.status)" | C:\Users\Rafael Marcondes
+health_n8n      | py -c "import urllib.request; r=urllib.request.urlopen('http://167.233.49.205:5678/healthz', timeout=10); print('OK:', r.status)" | C:\Users\1217
+health_openclaw | py -c "import urllib.request; r=urllib.request.urlopen('http://167.233.49.205:80', timeout=10); print('OK:', r.status)" | C:\Users\1217
 ---
 
 --- prompt

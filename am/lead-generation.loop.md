@@ -9,7 +9,7 @@ tags: am, aquisicao, leads, comercial, semanal
 ---
 
 --- commands
-crm | type "C:\Users\Rafael Marcondes\loops\am\crm.md" | C:\Users\Rafael Marcondes\loops
+crm | type "C:\Users\1217\loops\am\crm.md" | C:\Users\1217\loops
 ---
 
 --- prompt

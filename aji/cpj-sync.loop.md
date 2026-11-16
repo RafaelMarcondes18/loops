@@ -9,7 +9,7 @@ tags: aji, cpj, sync, daily
 ---
 
 --- commands
-cpj_sync | py cpj_sync.py | C:\Users\Rafael Marcondes\intimacoes-extractor
+cpj_sync | py cpj_sync.py | C:\Users\1217\Quadrados\controladoria-juridica\automacoes\intimacoes-extractor
 ---
 
 --- prompt

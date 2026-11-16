@@ -9,7 +9,7 @@ tags: am, crm, notion, supabase, n8n, monitor, daily
 ---
 
 --- commands
-crm_check | py -c "import urllib.request,json; r=urllib.request.urlopen('https://asegqyqqrekfyvpkzmma.supabase.co/rest/v1/am_leads?select=count&limit=1', timeout=10); print('Supabase OK:', r.status)" | C:\Users\Rafael Marcondes
+crm_check | py -c "import urllib.request,json; r=urllib.request.urlopen('https://asegqyqqrekfyvpkzmma.supabase.co/rest/v1/am_leads?select=count&limit=1', timeout=10); print('Supabase OK:', r.status)" | C:\Users\1217
 ---
 
 --- prompt

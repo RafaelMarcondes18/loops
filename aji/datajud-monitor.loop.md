@@ -9,7 +9,7 @@ tags: aji, datajud, cnj, jurimetria, monitor, daily
 ---
 
 --- commands
-datajud | py datajud_monitor.py --quiet | C:\Users\Rafael Marcondes\intimacoes-extractor
+datajud | py datajud_monitor.py --quiet | C:\Users\1217\Quadrados\controladoria-juridica\automacoes\intimacoes-extractor
 ---
 
 --- prompt
