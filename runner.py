@@ -40,6 +40,15 @@ CONFIG_PATH = LOOPS_DIR / "config.json"
 OUTPUT_DIR  = LOOPS_DIR / "output"
 OUTPUT_DIR.mkdir(exist_ok=True)
 
+# O modelo chamado aqui nao tem ferramentas nem acesso a PROJUDI, CRM ou planilhas: so ve o que esta no prompt.
+GUARDA_DADOS = (
+    "REGRA OBRIGATORIA: voce nao tem acesso a nenhum sistema externo. Use somente os dados "
+    "presentes neste prompt. Nao invente processos, prazos, partes, pessoas, valores ou datas. "
+    "Se um dado necessario nao estiver aqui, escreva 'SEM DADOS - verificar manualmente' "
+    "e diga qual fonte faltou. Um comando que retornou [ERRO], [EXIT n] ou [TIMEOUT] e FALHA, "
+    "nao 'sem movimentacoes'."
+)
+
 
 # ── Config ────────────────────────────────────────────────────────────────────
 
@@ -85,7 +94,13 @@ def parse_meta(content: str) -> dict:
     return meta
 
 
-def parse_commands(content: str) -> list[dict]:
+def resolve_cwd(raw: str, base: Path) -> str:
+    # %VAR% expandido e caminho relativo resolvido a partir da pasta do .loop.md: o mesmo loop roda em maquinas diferentes
+    p = Path(os.path.expandvars(raw)) if raw else base
+    return str(p if p.is_absolute() else (base / p).resolve())
+
+
+def parse_commands(content: str, base: Path = LOOPS_DIR) -> list[dict]:
     commands = []
     raw = parse_section(content, "commands")
     for line in raw.splitlines():
@@ -97,7 +112,7 @@ def parse_commands(content: str) -> list[dict]:
             commands.append({
                 "label": parts[0],
                 "cmd":   parts[1],
-                "cwd":   parts[2] if len(parts) > 2 else str(LOOPS_DIR),
+                "cwd":   resolve_cwd(parts[2] if len(parts) > 2 else "", base),
             })
     return commands
 
@@ -108,7 +123,7 @@ def parse_prompt(content: str) -> str:
 
 def load_loop(path: Path) -> tuple[dict, list[dict], str]:
     text = path.read_text(encoding="utf-8")
-    return parse_meta(text), parse_commands(text), parse_prompt(text)
+    return parse_meta(text), parse_commands(text, path.parent), parse_prompt(text)
 
 
 # ── Pre-commands ──────────────────────────────────────────────────────────────
@@ -120,10 +135,16 @@ def run_commands(commands: list[dict], log: logging.Logger) -> dict[str, str]:
         cmd   = cmd_cfg["cmd"]
         cwd   = cmd_cfg["cwd"]
         log.info(f"  [{label}] {cmd}")
+        if not Path(cwd).is_dir():
+            outputs[label] = f"[ERRO] diretorio de trabalho nao existe: {cwd}"
+            log.error(outputs[label])
+            continue
         try:
             result = subprocess.run(
                 cmd, shell=True, cwd=cwd,
-                capture_output=True, text=True, timeout=120
+                capture_output=True, text=True, timeout=120,
+                encoding="utf-8", errors="replace",
+                env={**os.environ, "PYTHONIOENCODING": "utf-8"},
             )
             out = (result.stdout + result.stderr).strip()
             outputs[label] = out or "(sem output)"
@@ -340,6 +361,8 @@ def main():
     if provider not in ("anthropic", "claude") and project_prefix:
         prompt = f"=== CONTEXTO DO PROJETO: {project} ===\n{project_prefix}\n=== FIM DO CONTEXTO ===\n\n{prompt}"
         project_prefix = ""  # já injetado, não passar como system
+
+    prompt += "\n\n" + GUARDA_DADOS
 
     if args.dry_run:
         print("\n" + "="*60)

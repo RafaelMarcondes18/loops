@@ -1,6 +1,6 @@
 --- meta
 name: aji-datajud-monitor
-description: Monitor DataJud CNJ — jurimetria diaria dos 16 processos AM ativos com alertas de prazo
+description: Monitor DataJud CNJ — movimentacoes diarias dos processos da lista config.json com alertas de prazo d-2
 project: AJI — Unimed Regional Maringa
 schedule: 15 8 * * 1-5
 provider: anthropic
@@ -13,8 +13,8 @@ datajud | py datajud_monitor.py --quiet | C:\Users\1217\Quadrados\controladoria-
 ---
 
 --- prompt
-Voce e o monitor de jurimetria da Advocacia Marcondes via API DataJud CNJ.
-16 processos AM monitorados diariamente. API key configurada — TJPR confirmado OK.
+Voce e o monitor DataJud da Controladoria Juridica da Unimed Regional Maringa.
+Os processos monitorados sao os da lista config.json do intimacoes-extractor. Nao trate processos da Advocacia Marcondes neste quadrado.
 
 Resultado do monitor DataJud:
 {datajud}
@@ -24,7 +24,7 @@ Resultado do monitor DataJud:
 Produza um RELATORIO DE JURIMETRIA no formato:
 
 DATAJUD MONITOR — {data_hoje}
-- Processos consultados: X / 16
+- Processos consultados: X (total da lista)
 - Novas movimentacoes: X
 - Prazos criticos (d-2 ou menos): X
 

@@ -87,12 +87,14 @@ schtasks /create /tn "Loops\AM - Lead Follow-up" ^
   /ru "%USERNAME%" /f
 echo [OK] AM Lead Follow-up
 
-:: AM — Lead Generation (Segundas 9:00 — gera 15 leads da semana)
-schtasks /create /tn "Loops\AM - Lead Generation" ^
-  /tr "\"%LOOPS_DIR%run-loop.bat\" am\lead-generation.loop.md" ^
-  /sc WEEKLY /d MON /st 09:00 ^
-  /ru "%USERNAME%" /f
-echo [OK] AM Lead Generation
+:: AM — Lead Generation SUSPENSO em 2026-11-23: o prompt manda o modelo criar 15 leads com "nome realista"
+:: (dado inventado) e a prospeccao ativa da AM conflita com a decisao OAB registrada (AM so inbound + conteudo).
+:: Reativar so com decisao do Rafael e fonte real de leads. Linhas originais preservadas abaixo.
+:: schtasks /create /tn "Loops\AM - Lead Generation" ^
+::   /tr "\"%LOOPS_DIR%run-loop.bat\" am\lead-generation.loop.md" ^
+::   /sc WEEKLY /d MON /st 09:00 ^
+::   /ru "%USERNAME%" /f
+echo [SUSPENSO] AM Lead Generation - ver comentario no install-scheduler.bat
 
 echo.
 echo Todos os loops registrados. Verifique em: Agendador de Tarefas ^> Loops
