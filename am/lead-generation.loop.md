@@ -1,4 +1,6 @@
 --- meta
+disabled: true
+disabled_reason: desligado em 2026-11-23 por decisao do Rafael (prospeccao ativa x regra OAB)
 name: am-lead-generation
 description: Geração semanal de 15 leads qualificados por área de foco — entrega tabela pronta para validação e abordagem. Rafael valida, aprova e o Caio escreve as mensagens.
 project: am-trabalhista

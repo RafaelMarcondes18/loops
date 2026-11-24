@@ -80,12 +80,14 @@ schtasks /create /tn "Loops\n8n - Health Check" ^
   /ru "%USERNAME%" /f
 echo [OK] Hetzner Health Check (n8n + OpenClaw)
 
-:: AM — Lead Follow-up (Seg-Sex 8:00 — verifica CRM e gera follow-ups)
-schtasks /create /tn "Loops\AM - Lead Follow-up" ^
-  /tr "\"%LOOPS_DIR%run-loop.bat\" am\lead-followup.loop.md" ^
-  /sc WEEKLY /d MON,TUE,WED,THU,FRI /st 08:00 ^
-  /ru "%USERNAME%" /f
-echo [OK] AM Lead Follow-up
+:: AM — Lead Follow-up DESLIGADO em 2026-11-23 por decisao do Rafael (prospeccao ativa x regra OAB).
+:: Linhas originais preservadas abaixo. Reativar: descomentar e tirar "disabled: true" do .loop.md.
+:: schtasks /create /tn "Loops\AM - Lead Follow-up" ^
+::   /tr "\"%LOOPS_DIR%run-loop.bat\" am\lead-followup.loop.md" ^
+::   /sc WEEKLY /d MON,TUE,WED,THU,FRI /st 08:00 ^
+::   /ru "%USERNAME%" /f
+schtasks /change /tn "Loops\AM - Lead Follow-up" /disable >nul 2>&1
+echo [DESLIGADO] AM Lead Follow-up
 
 :: AM — Lead Generation SUSPENSO em 2026-11-23: o prompt manda o modelo criar 15 leads com "nome realista"
 :: (dado inventado) e a prospeccao ativa da AM conflita com a decisao OAB registrada (AM so inbound + conteudo).
@@ -94,7 +96,8 @@ echo [OK] AM Lead Follow-up
 ::   /tr "\"%LOOPS_DIR%run-loop.bat\" am\lead-generation.loop.md" ^
 ::   /sc WEEKLY /d MON /st 09:00 ^
 ::   /ru "%USERNAME%" /f
-echo [SUSPENSO] AM Lead Generation - ver comentario no install-scheduler.bat
+schtasks /change /tn "Loops\AM - Lead Generation" /disable >nul 2>&1
+echo [DESLIGADO] AM Lead Generation
 
 echo.
 echo Todos os loops registrados. Verifique em: Agendador de Tarefas ^> Loops

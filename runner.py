@@ -321,6 +321,10 @@ def main():
     provider  = args.provider or meta.get("provider") or config.get("default_provider", "anthropic")
     model     = args.model    or meta.get("model", "")
 
+    if meta.get("disabled", "").lower() == "true":
+        print(f"Loop {loop_name} desligado (disabled: true no .loop.md). Nada executado.")
+        return
+
     log.info(f"Loop: {loop_name}")
     log.info(f"Provider: {provider} | Model: {model or 'default'}")
 

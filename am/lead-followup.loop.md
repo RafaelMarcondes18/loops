@@ -1,4 +1,6 @@
 --- meta
+disabled: true
+disabled_reason: desligado em 2026-11-23 por decisao do Rafael (prospeccao ativa x regra OAB)
 name: am-lead-followup
 description: Verifica o CRM de prospecção e gera follow-up personalizado para leads sem resposta há 3+ dias. Roda autonomamente toda manhã — Rafael só valida e envia.
 project: am-trabalhista
